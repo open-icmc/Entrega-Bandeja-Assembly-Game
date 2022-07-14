@@ -22,3 +22,5 @@ Ande utilizando WASD como nos jogos que conhecemos e tente chegar ao outro lado 
 Para jogar você deve ter instalado o simulador disponibilizado pelo professor, na pasta Simulador, inclua o arquivo .asm que disponibilizamos,abra o simulador com o executável do Sublime,
 abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME e se divirta !
 
+## Agradecimentos
+Os alunos (Nerds da Computação) agradecem o empenho do professor Simões e pelos conhecimentos passados para construção da arquitetura.:nerd_face:
