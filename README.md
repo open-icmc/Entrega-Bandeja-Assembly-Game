@@ -75,38 +75,37 @@ abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME 
  ```c
  // 1) Definir os separadores da Instrucao e quantas linhas do EXE (mif) ela necessita:
   /* Instrucoes de 2 argumentos e 1 linha : instr (), () -> [...] */
-            case NOT_CODE :	/* Eu pus aqui pois sera' Rx <- Not Ry */
-	    case MOV_CODE :
-            case OUTCHAR_CODE :
-            case CMP_CODE :
-            case POW2_CODE : // NOVA INSTRUCAO
-                parser_SkipUntil(',');
-                parser_SkipUntilEnd();
-                end_cnt++;
-                break;
+	case NOT_CODE :	/* Eu pus aqui pois sera' Rx <- Not Ry */
+	case MOV_CODE :
+	case OUTCHAR_CODE :
+	case CMP_CODE :
+	case POW2_CODE : // NOVA INSTRUCAO
+		parser_SkipUntil(',');
+		parser_SkipUntilEnd();
+		end_cnt++;
+		break;
 		
 // 2) Explicar como o Montador vai montar os BITs da Instrucao e escrever no arquivo:	
-                /* ==============
-                    POW2 Rx Ry
-                    ==============
-                */
+                 /* ==============
+                     POW2 Rx Ry
+                    ============== */
 
-                case POW2_CODE:
-                    str_tmp1 = parser_GetItem_s();
-                    val1 = BuscaRegistrador(str_tmp1);
-                    free(str_tmp1);
-                    parser_Match(',');
-                    str_tmp2 = parser_GetItem_s();
-                    val2 = BuscaRegistrador(str_tmp2);
-                    free(str_tmp2);
-                    str_tmp1 = ConverteRegistrador(val1);
-                    str_tmp2 = ConverteRegistrador(val2);
-                    sprintf(str_msg, "%s%s%s0000", POW2, str_tmp1, str_tmp2);
-                    free(str_tmp1);
-                    free(str_tmp2);
-                    parser_Write_Inst(str_msg, end_cnt);
-                    end_cnt += 1;
-                    break;
+	case POW2_CODE:
+	    str_tmp1 = parser_GetItem_s();
+	    val1 = BuscaRegistrador(str_tmp1);
+	    free(str_tmp1);
+	    parser_Match(',');
+	    str_tmp2 = parser_GetItem_s();
+	    val2 = BuscaRegistrador(str_tmp2);
+	    free(str_tmp2);
+	    str_tmp1 = ConverteRegistrador(val1);
+	    str_tmp2 = ConverteRegistrador(val2);
+	    sprintf(str_msg, "%s%s%s0000", POW2, str_tmp1, str_tmp2);
+	    free(str_tmp1);
+	    free(str_tmp2);
+	    parser_Write_Inst(str_msg, end_cnt);
+	    end_cnt += 1;
+	    break;
 
 		
 // 3) Buscar o nome da instrucao na base de instrucoes e retornar 'op_code interno' da instrucao:	
