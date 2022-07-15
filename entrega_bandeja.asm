@@ -660,9 +660,9 @@ ChecaPos:
 	cmp r0, r1			; if posPlayer == posItem  Pega o Item!!
 	jeq PegarFaca
 	
-	load r1, posGarfo
+	load r1, posColher
 	cmp r0, r1			; if posPlayer == posItem  Pega o Item!!
-	jeq PegarItem4
+	jeq PegarColher
 	;------------------------;
 	
 	;Verificar se o jogador alcançou o campo em que se deve por as Items;
@@ -716,7 +716,7 @@ PegarFaca:
 
 ;----------------------------------
 
-PegarItem4:
+PegarColher:
 	load r1, pegouColher
 	loadn r2, #1
 	cmp r1, r2
@@ -779,7 +779,7 @@ ColocarColher:
 	store colocouColher, r2
 	load r1, posFinalColher
 	dec r1
-	store posGarfo, r1
+	store posColher, r1
 	call Desenha_Colher
 	call ChecarItensEntregues
 	jmp FimChecagem
