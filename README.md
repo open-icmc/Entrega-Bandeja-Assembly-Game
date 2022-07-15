@@ -1,5 +1,5 @@
 # Entrega-Bandeja-Assembly-Game
-#### Projeto da disciplina SSC0119 Pratica em Organização de Computadores ministrada pelo professor Eduardo do Valle Simões.
+### Projeto da disciplina SSC0119 Pratica em Organização de Computadores ministrada pelo professor Eduardo do Valle Simões.
 
 Nesta disciplina os alunos trabalharam com o caminho de dados das intruções de um processador feito pelo professor para o ICMC-USP, conhecendo como cada instrução funciona e até criando uma e adicionando-a à arquitetura: Em nosso projeto, implementamos a instrução POW2, que calcula a potência de 2 do número que estiver no segundo registrador de argumento e guarda o resultado da operação no primeiro registrador de argumento.
 
@@ -11,7 +11,7 @@ Nesta disciplina os alunos trabalharam com o caminho de dados das intruções de
 Nosso jogo é uma simulação pitoresca de um minigame que muitos alunos frequentadores do bandejão da USP de São Carlos jogam todos os dias: A fuga da ducha do Tatuado do Bandeco. Bricadeiras à parte e com todo respeito ao funcionário exemplar, temos aqui nosso jogo feito na linguagem Assembly do processador do professor Simões.
 
 
-Nele o jogador(aluno) deve pegar os itens na mesa e entregar no balcão sem se molhar. Tente uma vez! Ande utilizando WASD e tente chegar ao outro lado e voltar sem ser atingido pelas gotas geladas da ducha!
+Nele o jogador (aluno) deve pegar os itens na mesa e entregar no balcão sem se molhar. Tente uma vez! Ande utilizando WASD e tente chegar ao outro lado e voltar sem ser atingido pelas gotas geladas da ducha!
 
 ### :camera: Screenshots do jogo:
 ![alt text](https://user-images.githubusercontent.com/83041423/179308970-b8a56d3f-cc16-4497-afb1-54844bb67334.jpg)
