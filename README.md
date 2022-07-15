@@ -22,7 +22,7 @@ Ande utilizando WASD como nos jogos que conhecemos e tente chegar ao outro lado 
 Para jogar você deve ter instalado o simulador disponibilizado pelo professor, na pasta Simulador, inclua o arquivo .asm que disponibilizamos,abra o simulador com o executável do Sublime,
 abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME e se divirta !
 
-## Incluindo nova instrução na arquitetura
+## :computer: Incluindo nova instrução na arquitetura :computer:
 
  Como nova instrução implementamos a instrução POW2 que calcula a potência de 2 do segundo argumento da instrução e guarda o resultado no primeiro argumento
 
