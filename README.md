@@ -45,8 +45,23 @@ abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME 
 #define NOP_CODE                0
 #define INPUT_CODE              96
 #define OUTPUT_CODE             97
-#define POW2_CODE               99
-```
+#define POW2_CODE               99  // NOVA INSTRUCAO
+
+
+/* Aritmethic Instructions(All should begin with "10"):	*/
+#define ADD             "100000"
+#define SUB             "100001"
+#define MUL             "100010"
+#define DIV             "100011"
+#define INC             "100100"
+#define LMOD            "100101"
+#define POW2            "100110"
+
+
+/*POW2*/
+#define POW2_STR                "POW2"
+
+##```
 
 ## Agradecimentos
 Os alunos (Nerds da Computação) agradecem o empenho do professor Simões e pelos conhecimentos passados para construção da arquitetura.:nerd_face:
