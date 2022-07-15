@@ -17,6 +17,13 @@ Incluir foto
 Nele o aluno tem que pegar os objetivos na mesa e entregar no balcão sem se molhar, tente uma vez!
 Ande utilizando WASD como nos jogos que conhecemos e tente chegar ao outro lado e voltar sem ser atingido pelas gotas geladas da ducha !
 
+### :chicken: Printsscreens do jogo :
+![alt text](https://user-images.githubusercontent.com/83041423/179308970-b8a56d3f-cc16-4497-afb1-54844bb67334.jpg)
+![alt text](https://user-images.githubusercontent.com/83041423/179308958-f0857ae9-42f1-446c-9fd5-c572be0957dc.jpg)
+![alt text](https://user-images.githubusercontent.com/83041423/179308966-f79a4705-72c0-4db4-85c2-3ac851735a98.jpg)
+
+
+
 ## :question: Como iniciar o jogo :question:
 
 Para jogar você deve ter instalado o simulador disponibilizado pelo professor, na pasta Simulador, inclua o arquivo .asm que disponibilizamos,abra o simulador com o executável do Sublime,
