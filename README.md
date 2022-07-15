@@ -22,5 +22,31 @@ Ande utilizando WASD como nos jogos que conhecemos e tente chegar ao outro lado 
 Para jogar você deve ter instalado o simulador disponibilizado pelo professor, na pasta Simulador, inclua o arquivo .asm que disponibilizamos,abra o simulador com o executável do Sublime,
 abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME e se divirta !
 
+## Incluindo nova instrução na arquitetura
+
+ Como nova instrução implementamos a instrução POW2 que calcula a potência de 2 do segundo argumento da instrução e guarda o resultado no primeiro argumento
+ ## montador.c
+ ```c
+  /* Instrucoes de 2 argumentos e 1 linha : instr (), () -> [...] */
+            case NOT_CODE :	/* Eu pus aqui pois sera' Rx <- Not Ry */
+	        case MOV_CODE :
+            case OUTCHAR_CODE :
+            case CMP_CODE :
+            case POW2_CODE : // NOVA INSTRUCAO
+                parser_SkipUntil(',');
+                parser_SkipUntilEnd();
+                end_cnt++;
+                break;
+```
+
+## defs.h
+ ```c
+#define LMOD_CODE               95
+#define NOP_CODE                0
+#define INPUT_CODE              96
+#define OUTPUT_CODE             97
+#define POW2_CODE               99
+```
+
 ## Agradecimentos
 Os alunos (Nerds da Computação) agradecem o empenho do professor Simões e pelos conhecimentos passados para construção da arquitetura.:nerd_face:
