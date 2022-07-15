@@ -33,7 +33,7 @@ abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME 
 
  Como nova instrução implementamos a instrução POW2 que calcula a potência de 2 do segundo argumento da instrução e guarda o resultado no primeiro argumento
  
- ## exemplo na testacpu.asm
+ ## Exemplo na testacpu.asm
  ```c
  loadn r0, #32
 	loadn r1, #2
