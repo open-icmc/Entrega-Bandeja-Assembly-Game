@@ -1,22 +1,19 @@
 # Entrega-Bandeja-Assembly-Game
 #### Projeto da disciplina SSC0119 Pratica em Organização de Computadores ministrada pelo professor Eduardo do Valle Simões.
 
-Nessa disciplina os alunos trabalharam com o caminho de dados das intruções de um processador, conhecendo como cada instrução funciona e até criando uma e adicionando à arquitetura.
-Em nosso projeto, implementamos a instrução POW2, que calcula a potência de 2 do número que estiver no registrador de argumento e guarda no outro registrador na parte esquerda
+Nesta disciplina os alunos trabalharam com o caminho de dados das intruções de um processador feito pelo professor para o ICMC-USP, conhecendo como cada instrução funciona e até criando uma e adicionando-a à arquitetura: Em nosso projeto, implementamos a instrução POW2, que calcula a potência de 2 do número que estiver no segundo registrador de argumento e guarda o resultado da operação no primeiro registrador de argumento.
 
 
 ## :video_game: O jogo em Assembly
 
 
 
-Nosso jogo é uma simulação pitoresca de um minigame que muitos alunos frequentadores do bandejão da USP de São Carlos jogam todo dia: A fuga da ducha do Tatuado do Bandeco
-Bricadeiras à parte e todo respeito ao funcionário exemplar , temos aqui nosso jogo feito na linguagem Assembly do processador do professor Simões.
+Nosso jogo é uma simulação pitoresca de um minigame que muitos alunos frequentadores do bandejão da USP de São Carlos jogam todos os dias: A fuga da ducha do Tatuado do Bandeco. Bricadeiras à parte e com todo respeito ao funcionário exemplar, temos aqui nosso jogo feito na linguagem Assembly do processador do professor Simões.
 
 
-Nele o aluno tem que pegar os objetivos na mesa e entregar no balcão sem se molhar, tente uma vez!
-Ande utilizando WASD como nos jogos que conhecemos e tente chegar ao outro lado e voltar sem ser atingido pelas gotas geladas da ducha !
+Nele o jogador(aluno) deve pegar os itens na mesa e entregar no balcão sem se molhar. Tente uma vez! Ande utilizando WASD e tente chegar ao outro lado e voltar sem ser atingido pelas gotas geladas da ducha!
 
-### :camera: Printsscreens do jogo :
+### :camera: Screenshots do jogo:
 ![alt text](https://user-images.githubusercontent.com/83041423/179308970-b8a56d3f-cc16-4497-afb1-54844bb67334.jpg)
 ![alt text](https://user-images.githubusercontent.com/83041423/179308958-f0857ae9-42f1-446c-9fd5-c572be0957dc.jpg)
 ![alt text](https://user-images.githubusercontent.com/83041423/179308966-f79a4705-72c0-4db4-85c2-3ac851735a98.jpg)
@@ -25,8 +22,7 @@ Ande utilizando WASD como nos jogos que conhecemos e tente chegar ao outro lado 
 
 ## :question: Como iniciar o jogo :question:
 
-Para jogar você deve ter instalado o simulador disponibilizado pelo professor, na pasta Simulador, inclua o arquivo .asm que disponibilizamos,abra o simulador com o executável do Sublime,
-abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME e se divirta !
+Para jogar você deve ter instalado o simulador disponibilizado pelo professor e, na pasta Simulador, incluir o arquivo .asm que disponibilizamos. Feito isso, abra o simulador com o executável do Sublime e abra o arquivo .asm. Para compilar aperte F7, e, quando a janela do simulador abrir, basta apertar HOME e se divertir!
 
 ## Aqui algumas fotos das mudanças feitas no código da arquitetura em VHDL
 
