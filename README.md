@@ -25,7 +25,16 @@ abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME 
 ## :computer: Incluindo nova instrução na arquitetura :computer:
 
  Como nova instrução implementamos a instrução POW2 que calcula a potência de 2 do segundo argumento da instrução e guarda o resultado no primeiro argumento
-
+ 
+ ##exemplo na testacpu.asm
+ ```c
+ loadn r0, #32
+	loadn r1, #2
+	loadn r2, #'Q'
+	POW2 r1,r1
+	add r2,r2,r1
+	outchar r2, r0    ; Printa U na linha 32
+```
 
 ## defs.h
  ```c
