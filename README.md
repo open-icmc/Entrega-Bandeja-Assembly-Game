@@ -110,10 +110,11 @@ abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME 
 
                 /* ==============
 		
-// 3) Buscar o nome da instrucao na base de instrucoes e retornar 'op_code interno' da instrucao:		
+// 3) Buscar o nome da instrucao na base de instrucoes e retornar 'op_code interno' da instrucao:	
+
 	else if (strcmp(str_tmp, POW2_STR) == 0){
-        	return POW2_CODE;
-    	}
+		return POW2_CODE;
+	}
 ```
 ## Como compilar/utilizar o montador?
 Para compilar, basta usar o gcc cos arquivos da parta Montador:
