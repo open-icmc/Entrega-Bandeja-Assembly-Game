@@ -111,6 +111,12 @@ abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME 
         	return POW2_CODE;
     	}
 ```
+## Como compilar/utilizar o montador?
+Para compilar, basta usar o gcc cos arquivos da parta Montador:
+- gcc *.c -o montador
+Para executar o 'montador', passe os seguintes parâmetros:
+- ./montador <arquivo_entrada.asm> <arquivo_saida.mif>
+Dessa forma, o montador gerará o arquivo .mif que será utilizado na placa FPGA ou no simulador.
 
 ## Agradecimentos
 Os alunos (Nerds da Computação) agradecem o empenho do professor Simões e pelos conhecimentos passados para construção da arquitetura.:nerd_face:
