@@ -1,327 +1,317 @@
 jmp main
-Win: string "    VOCE VENCEU A BASICA!    "
-Dead: string "       VOCE MORREU!       "
-Msg: string "     Jogar novamente? (s/n)"
 
-Letra: var #1			; Contem a letra que foi digitada
+Win: string  "VOCE VENCEU A BASICA!"
+Dead: string "     VOCE MORREU!"
+Msg: string  "   Jogar novamente? (s/n)"
+Autores: string"   Feito por Susy, Otavio e Adalton   "
 
-posPlayer: var #1			; Contem a posicao atual da Player
-posAntPlayer: var #1		; Contem a posicao anterior da Player
+Letra: var #1		; Contem a letra que foi digitada
 
-posInimigo1: var #1		; Contem a posicao atual do Inimigo1
-posAntInimigo1: var #1		; Contem a posicao anterior do Inimigo
+posPlayer: var #1	; Contem a posicao atual do Player
+posAntPlayer: var #1; Contem a posicao anterior do Player
 
+posGota1: var #1	; Contem a posicao atual da Gota1
+posAntGota1: var #1	; Contem a posicao anterior do Gota
 
-posInimigo2: var #1		; Contem a posicao atual do Inimigo
-posAntInimigo2: var #1	; Contem a posicao anterior do Inimigo
+posGota2: var #1	; Contem a posicao atual da Gota
+posAntGota2: var #1	; Contem a posicao anterior da Gota
 
+posGota3: var #1	; Contem a posicao atual da Gota
+posAntGota3: var #1	; Contem a posicao anterior da Gota
 
-posInimigo3: var #1		; Contem a posicao atual do Inimigo
-posAntInimigo3: var #1	; Contem a posicao anterior do Inimigo
+posGota4: var #1	; Contem a posicao atual da Gota
+posAntGota4: var #1	; Contem a posicao anterior da Gota
 
+posGota5: var #1	; Contem a posicao atual da Gota
+posAntGota5: var #1	; Contem a posicao anterior da Gota
 
-posInimigo4: var #1		; Contem a posicao atual do Inimigo
-posAntInimigo4: var #1	; Contem a posicao anterior do Inimigo
-
-
-posInimigo5: var #1		; Contem a posicao atual do Inimigo
-posAntInimigo5: var #1	; Contem a posicao anterior do Inimigo
-
-
-posInimigo6: var #1		; Contem a posicao atual do Inimigo
-posAntInimigo6: var #1	; Contem a posicao anterior do Inimigo
+posGota6: var #1	; Contem a posicao atual da Gota
+posAntGota6: var #1	; Contem a posicao anterior da Gota
 
 
-posBandeira1: var #1
-posBandeira2: var #1
-posBandeira3: var #1
-posBandeira4: var #1
+posBandeja: var #1
+posGarfo: var #1
+posFaca: var #1
+posColher: var #1
 
-posFinalBandeira1: var #1
-posFinalBandeira2: var #1
-posFinalBandeira3: var #1
-posFinalBandeira4: var #1
+posFinalBandeja: var #1
+posFinalGarfo: var #1
+posFinalFaca: var #1
+posFinalColher: var #1
 
-pegouBandeira1: var #1
-pegouBandeira2: var #1
-pegouBandeira3: var #1
-pegouBandeira4: var #1 
+pegouBandeja: var #1
+pegouGarfo: var #1
+pegouFaca: var #1
+pegouColher: var #1 
 
-colocouBandeira1: var #1
-colocouBandeira2: var #1
-colocouBandeira3: var #1
-colocouBandeira4: var #1
+colocouBandeja: var #1
+colocouGarfo: var #1
+colocouFaca: var #1
+colocouColher: var #1
 
-
-posicaoInimigoInicial: var #1
-posicaoInimigoAtual: var #1
+posicaoGotaInicial: var #1
+posicaoGotaAtual: var #1
 posCorreta: var #1
-posInimigoAnterior: var #1
+posGotaAnterior: var #1
 
 
-;Codigo principal
+;--------------------------  Codigo principal  ----------------------------
 main:
 	;---Tela Inicial---;
 	call ApagaTela
 	loadn r1, #telaInicioLinha0		; Imprime a tela inicial do jogo;
-	loadn r2, #1536                   ; Cor da tela inicial #512 --> verde
+	loadn r2, #1536                 ; Cor da tela inicial #1536 --> teal
 	call ImprimeTela
 	
 	Loop_Inicio:
-		call DigLetra 			; Le uma letra do teclado
-		loadn r0, #' '			; Quando a tecla espaco for acionada, comeca o jogo
+		call DigLetra ; Le uma letra do teclado
+		loadn r0, #' '; Quando a tecla espaco for acionada, comeca o jogo
 		load r1, Letra
 		cmp r0, r1
 		jne Loop_Inicio
 	
-	
+
 	;---Inicio do Jogo---;
 	call ApagaTela
-	;loadn r1, #tela1Linha0		; Endereco onde comeca a primeira linha do cenario!!
-	;loadn r2, #1536 			; cor azul!
-	;call ImprimeTela2   		;  rotina de Impresao de Cenario na Tela Inteira
     
-	loadn r1, #tela2Linha0		; Endereco onde comeca a primeira linha do cenario!!
-	loadn r2, #768 			; cor verde! --mesa
-	call ImprimeTela2   		;  rotina de Impresao de Cenario na Tela Inteira
-    
-	loadn r1, #tela3Linha0		; Endereco onde comeca a primeira linha do cenario!!
-	loadn r2, #256   			; cor vermelha! -contornos das bandejas
-	call ImprimeTela2   		;  rotina de Impresao de Cenario na Tela Inteira
+	loadn r1, #tela1Linha0		; Endereco onde comeca a primeira linha do cenario!!
+	loadn r2, #768 			    ; cor oliva! --mesa
+	call ImprimeTela2   		; rotina de Impresao de Cenario na Tela Inteira
 
-	loadn r1, #tela4Linha0		; Endereco onde comeca a primeira linha do cenario!!
-	loadn r2, #2560		    ; cor amerela! -borda
-	call ImprimeTela2   		;  rotina de Impresao de Cenario na Tela Inteira
+	loadn r1, #tela2Linha0		; Endereco onde comeca a primeira linha do cenario!!
+	loadn r2, #256   			; cor marrom!
+	call ImprimeTela2   		; rotina de Impresao de Cenario na Tela Inteira
+
+	loadn r1, #tela3Linha0		; Endereco onde comeca a primeira linha do cenario!!
+	loadn r2, #2560		        ; cor lima! -borda
+	call ImprimeTela2   		; rotina de Impresao de Cenario na Tela Inteira
 
 	Loadn r0, #566
-	store posPlayer, r0		; Seta Posicao Atual da Player
-	store posAntPlayer, r0	; Seta Posicao Anterior da Player
-	
-	Loadn r0, #63		 
-	store posInimigo1, r0		; Seta Posicao Atual do Inimigo
-	store posAntInimigo1, r0	; Seta Posicao Anterior do Inimigo
-	loadn r0, #1
+	store posPlayer, r0	
+	store posAntPlayer, r0
 
+	Loadn r0, #63		 
+	store posGota1, r0	
+	store posAntGota1, r0
+	loadn r0, #1
 	
 	Loadn r0, #922			 
-	store posInimigo2, r0		; Seta Posicao Atual do Inimigo
-	store posAntInimigo2, r0	; Seta Posicao Anterior do Inimigo
+	store posGota2, r0	
+	store posAntGota2, r0
 	loadn r0, #2
 
-	
-	Loadn r0, #1116			 
-	store posInimigo3, r0		; Seta Posicao Atual do Inimigo
-	store posAntInimigo3, r0	; Seta Posicao Anterior do Inimigo
+	Loadn r0, #1116		
+	store posGota3, r0	
+	store posAntGota3, r0
 	loadn r0, #3
-
 	
 	Loadn r0, #278			 
-	store posInimigo4, r0		; Seta Posicao Atual do Inimigo
-	store posAntInimigo4, r0	; Seta Posicao Anterior do Inimigo
+	store posGota4, r0
+	store posAntGota4, r0
 	loadn r0, #1
-
 	
 	Loadn r0, #1100		 
-	store posInimigo5, r0		; Seta Posicao Atual do Inimigo
-	store posAntInimigo5, r0	; Seta Posicao Anterior do Inimigo
+	store posGota5, r0
+	store posAntGota5, r0
 	loadn r0, #3
 
-	
 	Loadn r0, #455 
-	store posInimigo6, r0		; Seta Posicao Atual do Inimigo
-	store posAntInimigo6, r0	; Seta Posicao Anterior do Inimigo
+	store posGota6, r0
+	store posAntGota6, r0
 	loadn r0, #3
 
-	 
-	 
-	;Posições das Bandeiras no campo inimigo
+
+	;Posições dos itens
 	Loadn r0, #597
-	store posBandeira1, r0		; Seta Posicao da Bandeira 1 #
+	store posBandeja, r0
 	
 	Loadn r0, #596
-	store posBandeira2, r0		; Seta Posicao da Bandeira 2 P
+	store posGarfo, r0
 	
 	Loadn r0, #595
-	store posBandeira3, r0		; Seta Posicao da Bandeira 3 S
+	store posFaca, r0
 	
 	Loadn r0, #594                                            
-	store posBandeira4, r0		; Seta Posicao da Bandeira 4 U
+	store posColher, r0
 	;---------------------------;
 	
-	;Posições que as bandeiras devem ficar no campo do jogador
 	Loadn r0, #323
-	store posFinalBandeira1, r0		; Seta Posicao da Bandeira 1 
+	store posFinalBandeja, r0
 	
 	Loadn r0, #483
-	store posFinalBandeira2, r0		; Seta Posicao da Bandeira 2 
+	store posFinalGarfo, r0
 	
 	Loadn r0, #643
-	store posFinalBandeira3, r0		; Seta Posicao da Bandeira 3 
+	store posFinalFaca, r0
 	
 	Loadn r0, #803
-	store posFinalBandeira4, r0		; Seta Posicao da Bandeira 4 
+	store posFinalColher, r0
 	;-------------------------------;
 	
 	loadn r0, #0
-	store pegouBandeira1, r0		; Inicializar var que controlam as bandeiras capturadas
-	store pegouBandeira2, r0		
-	store pegouBandeira3, r0		
-	store pegouBandeira4, r0	
+	store pegouBandeja, r0	; Inicializar var que controlam os itens pegos
+	store pegouGarfo, r0		
+	store pegouFaca, r0		
+	store pegouColher, r0	
 	
-	store colocouBandeira1, r0		; Inicializar var que controlam as bandeiras colocadas no campo
-	store colocouBandeira2, r0		
-	store colocouBandeira3, r0		
-	store colocouBandeira4, r0
+	store colocouBandeja, r0  ; Inicializar var que controlam se os itens foram colocados
+	store colocouGarfo, r0		
+	store colocouFaca, r0		
+	store colocouColher, r0
 
 	 
 	call MovePlayer_Desenha
 		
-	call Bandeira1_Desenha
-	call Bandeira2_Desenha
-	call Bandeira3_Desenha
-	call Bandeira4_Desenha
-		
+	call Desenha_Bandeja
+	call Desenha_Garfo
+	call Desenha_Faca
+	call Desenha_Colher
 	
-	
-	 
-	
-	loadn r0, #0			; Contador para os Mods	= 0
-	loadn r2, #0			; Para verificar se (mod(c/10)==0	
+	loadn r0, #0 ; Contador para os Mods	= 0
+	loadn r2, #0 ; Para verificar se (mod(c/10)==0	
 	
 	Loop:
 	
 		loadn r1, #10
 		mod r1, r0, r1
 		cmp r1, r2		; if (mod(c/10)==0
-		ceq MovePlayer	; Chama rotina de movimentacao da Player
+
+		ceq MovePlayer	; Chama rotina de movimentacao do Player
 	
-		
-		
-		load r6, posInimigo1
-		store posicaoInimigoAtual, r6
-		load r6,posAntInimigo1
-		store posInimigoAnterior, r6
-		loadn r6,#49 ;inimigo 1 comeca na pos 49
-		store posicaoInimigoInicial,r6
-		
-		loadn r1, #8
-		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/10)==0
-		ceq MoveInimigo	; Chama rotina de movimentacao do Inimigo
-		load r6,posicaoInimigoAtual ;inimigo 1 comeca na pos 49
-		store posInimigo1,r6
-		load r6,posInimigoAnterior
-		store posAntInimigo1, r6
-		
-
-		
-		load r6, posInimigo2
-		store posicaoInimigoAtual, r6
-		load r6,posAntInimigo2
-		store posInimigoAnterior, r6
-		loadn r6,#52 ;inimigo 1 comeca na pos 49
-		store posicaoInimigoInicial,r6
+	;-----------gotas-------------
+		load r6, posGota1
+		store posicaoGotaAtual, r6
+		load r6,posAntGota1
+		store posGotaAnterior, r6
+		loadn r6,#49 ; Gota 1 comeca na pos 49
+		store posicaoGotaInicial,r6
 		
 		loadn r1, #8
 		mod r1, r0, r1
 		cmp r1, r2		; if (mod(c/10)==0
-		ceq MoveInimigo	; Chama rotina de movimentacao do Inimigo 2
-		load r6,posicaoInimigoAtual ;inimigo 1 comeca na pos 49
-		store posInimigo2,r6
-		load r6,posInimigoAnterior
-		store posAntInimigo2, r6
+
+		ceq MoveGota ; Chama rotina de movimentacao da Gota
+	
+		load r6,posicaoGotaAtual
+		store posGota1,r6
+		load r6,posGotaAnterior
+		store posAntGota1, r6
 		
-		
-		
-		load r6, posInimigo3
-		store posicaoInimigoAtual, r6
-		load r6,posAntInimigo3
-		store posInimigoAnterior, r6
-		loadn r6,#70 ;inimigo 1 comeca na pos 49
-		store posicaoInimigoInicial,r6
+
+		load r6, posGota2
+		store posicaoGotaAtual, r6
+		load r6,posAntGota2
+		store posGotaAnterior, r6
+		loadn r6,#52 ; Gota 2 comeca na pos 52
+		store posicaoGotaInicial,r6
 		
 		loadn r1, #8
 		mod r1, r0, r1
 		cmp r1, r2		; if (mod(c/10)==0
-		ceq MoveInimigo	; Chama rotina de movimentacao do Inimigo 3
-		load r6,posicaoInimigoAtual ;inimigo 1 comeca na pos 49
-		store posInimigo3,r6
-		load r6,posInimigoAnterior
-		store posAntInimigo3, r6
+	
+		ceq MoveGota ; Chama rotina de movimentacao da Gota 2
+
+		load r6,posicaoGotaAtual
+		store posGota2,r6
+		load r6,posGotaAnterior
+		store posAntGota2, r6
 		
 
-		load r6, posInimigo4
-		store posicaoInimigoAtual, r6
-		load r6,posAntInimigo4
-		store posInimigoAnterior, r6
-		loadn r6,#65 ;inimigo 1 comeca na pos 49
-		store posicaoInimigoInicial,r6
+		load r6, posGota3
+		store posicaoGotaAtual, r6
+		load r6,posAntGota3
+		store posGotaAnterior, r6
+		loadn r6,#70 ; Gota 3 comeca na pos 70
+		store posicaoGotaInicial,r6
+		
+		loadn r1, #8
+		mod r1, r0, r1
+		cmp r1, r2		; if (mod(c/10)==0
+			
+		ceq MoveGota ; Chama rotina de movimentacao da Gota 3
+		
+		load r6,posicaoGotaAtual
+		store posGota3,r6
+		load r6,posGotaAnterior
+		store posAntGota3, r6
+		
+
+		load r6, posGota4
+		store posicaoGotaAtual, r6
+		load r6,posAntGota4
+		store posGotaAnterior, r6
+		loadn r6,#65 ; Gota 4 comeca na pos 65
+		store posicaoGotaInicial,r6
 
 		loadn r1, #8
 		mod r1, r0, r1
 		cmp r1, r2		; if (mod(c/10)==0
-		ceq MoveInimigo	; Chama rotina de movimentacao do Inimigo 4
-		load r6,posicaoInimigoAtual ;inimigo 1 comeca na pos 49
-		store posInimigo4,r6
-		load r6,posInimigoAnterior
-		store posAntInimigo4, r6
+			
+		ceq MoveGota	; Chama rotina de movimentacao do Gota 4
+		
+		load r6,posicaoGotaAtual
+		store posGota4,r6
+		load r6,posGotaAnterior
+		store posAntGota4, r6
 		
 
-		load r6, posInimigo5
-		store posicaoInimigoAtual, r6
-		load r6,posAntInimigo5
-		store posInimigoAnterior, r6
-		loadn r6,#59 ;inimigo 1 comeca na pos 49
-		store posicaoInimigoInicial,r6
+		load r6, posGota5
+		store posicaoGotaAtual, r6
+		load r6,posAntGota5
+		store posGotaAnterior, r6
+		loadn r6,#59 ; Gota 5 comeca na pos 59
+		store posicaoGotaInicial,r6
 
 		loadn r1, #8
 		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/10)==0	
-		ceq MoveInimigo	; Chama rotina de movimentacao do Inimigo 5
-		load r6,posicaoInimigoAtual ;inimigo 1 comeca na pos 49
-		store posInimigo5,r6
-		load r6,posInimigoAnterior
-		store posAntInimigo5, r6
+		cmp r1, r2		; if (mod(c/10)==0
+
+		ceq MoveGota	; Chama rotina de movimentacao do Gota 5
+
+		load r6,posicaoGotaAtual
+		store posGota5,r6
+		load r6,posGotaAnterior
+		store posAntGota5, r6
 		
 		
-		
-		load r6, posInimigo6
-		store posicaoInimigoAtual, r6
-		load r6,posAntInimigo6
-		store posInimigoAnterior, r6
-		loadn r6,#55 ;inimigo 1 comeca na pos 49
-		store posicaoInimigoInicial,r6
+		load r6, posGota6
+		store posicaoGotaAtual, r6
+		load r6,posAntGota6
+		store posGotaAnterior, r6
+		loadn r6,#55 ; Gota 6 comeca na pos 55
+		store posicaoGotaInicial,r6
 		
 		loadn r1, #8
 		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/10)==0	
-		ceq MoveInimigo	; Chama rotina de movimentacao do Inimigo 5
-		load r6,posicaoInimigoAtual ;inimigo 1 comeca na pos 49
-		store posInimigo6,r6
-		load r6,posInimigoAnterior
-		store posAntInimigo6, r6
+		cmp r1, r2		; if (mod(c/10)==0
+
+		ceq MoveGota	; Chama rotina de movimentacao do Gota 5
+
+		load r6,posicaoGotaAtual
+		store posGota6,r6
+		load r6,posGotaAnterior
+		store posAntGota6, r6
 		
 		loadn r1, #10
 		mod r1, r0, r1
 		cmp r1, r2		; if (mod(c/10)==0
-		ceq ChecaPos	; Chama rotina de verificacao de colisao
+
+		ceq ChecaPos ; Chama rotina de verificacao de colisao
 	
 		call Delay
 		inc r0 	;c++
 		jmp Loop
 
 
-
-;Funcoes
-;--------------------------
-;-----------Player-----------
-;--------------------------
+;---------------------------
+;--------- FUNÇÕES ---------
+;---------------------------
 
 MovePlayer:
 	push r0
 	push r1
 		
-	call MovePlayer_recalculaPos		; recalcula Posicao da Player
+	call MovePlayer_recalculaPos ; recalcula Posicao do Player
 
 	; So Apaga e redesenha se (pos != posAnt)
 	; if (posPlayer != posAntPlayer)	{	
@@ -339,7 +329,7 @@ MovePlayer:
 		
 ;------------------------
 		
-MovePlayer_Apaga:		; Apaga a Player preservando o Cenario!
+MovePlayer_Apaga: ; Apaga o Player preservando o Cenario!
 	push r0
 	push r1
 	push r2
@@ -347,20 +337,20 @@ MovePlayer_Apaga:		; Apaga a Player preservando o Cenario!
 	push r4
 	push r5
 
-	load r0, posAntPlayer	; r0 = posAnt
+	load r0, posAntPlayer ; r0 = posAnt
 	
 	; --> r2 = Tela1Linha0 + posAnt + posAnt/40  
 	; tem que somar posAnt/40 no ponteiro pois as linas da string terminam com /0 !!
 
 	loadn r1, #tela0Linha0	; Endereco onde comeca a primeira linha do cenario!!
-	add r2, r1, r0			; r2 = Tela1Linha0 + posAnt
+	add r2, r1, r0 ; r2 = Tela1Linha0 + posAnt
 	loadn r4, #40
-	div r3, r0, r4			; r3 = posAnt/40
-	add r2, r2, r3			; r2 = Tela1Linha0 + posAnt + posAnt/40
+	div r3, r0, r4 ; r3 = posAnt/40
+	add r2, r2, r3 ; r2 = Tela1Linha0 + posAnt + posAnt/40
 	
-	loadi r5, r2			; r5 = Char (Tela(posAnt))
+	loadi r5, r2 ; r5 = Char (Tela(posAnt))
 	
-	outchar r5, r0			; Apaga o Obj na tela com o Char correspondente na memoria do cenario
+	outchar r5, r0 ; Apaga o Obj na tela com o Char correspondente na memoria do cenario
 	
 	pop r5
 	pop r4
@@ -370,9 +360,9 @@ MovePlayer_Apaga:		; Apaga a Player preservando o Cenario!
 	pop r0
 	rts
 	
-;--------------------------
+;----------------------------------
 		
-MovePlayer_recalculaPos:		; recalcula posicao da Player em funcao das Teclas pressionadas
+MovePlayer_recalculaPos: ; recalcula posicao do Player em funcao das Teclas pressionadas
 	push r0
 	push r1
 	push r2
@@ -381,7 +371,7 @@ MovePlayer_recalculaPos:		; recalcula posicao da Player em funcao das Teclas pre
 
 	load r0, posPlayer
 	
-	inchar r1				; Le Teclado para controlar a Player
+	inchar r1 ; Le Teclado para controlar o Player
 	loadn r2, #'a'
 	cmp r1, r2
 	jeq MovePlayer_recalculaPos_A
@@ -398,7 +388,7 @@ MovePlayer_recalculaPos:		; recalcula posicao da Player em funcao das Teclas pre
 	cmp r1, r2
 	jeq MovePlayer_recalculaPos_S
 	
-  	MovePlayer_recalculaPos_Fim:	; Se nao for nenhuma tecla valida, vai embora
+  	MovePlayer_recalculaPos_Fim: ; Se nao for nenhuma tecla valida, vai embora
 		store posPlayer, r0
 		pop r4
 		pop r3
@@ -445,62 +435,50 @@ MovePlayer_recalculaPos:		; recalcula posicao da Player em funcao das Teclas pre
 		loadn r4, #1
 		jmp MovePlayer_recalculaPos_Fim	
 
-MovePlayer_Desenha:	; Desenha caractere da Player
+MovePlayer_Desenha:	; Desenha caractere do Player
 	push r0
 	push r1
 	
-	Loadn r1, #'$'	; Player
+	Loadn r1, #'O'	; Player
 	load r0, posPlayer
 	outchar r1, r0
-	store posAntPlayer, r0	; Atualiza Posicao Anterior da Player = Posicao Atual
+	store posAntPlayer, r0 ; Atualiza Posicao Anterior do Player = Posicao Atual
 	
 	pop r1
 	pop r0
 	rts
 
-;-----------------------------------
-;--------------Inimigo----------------
 ;----------------------------------
 
-MoveInimigo:
+MoveGota:
 	push r0
 	push r1
 	
-	;load r1,posInimigo1 
-	;store posicaoInimigoAtual,r1
-	
-	;loadn r1,#49 ;inimigo 1 comeca na pos 49
-	;store posicaoInimigoInicial,r1
-	
-	call MoveInimigo_recalculaPos
+	call MoveGota_recalculaPos
 	
 	load r0, posCorreta
 	
-	;store posInimigo1, r0
-	store posicaoInimigoAtual, r0
+	;store posGota1, r0
+	store posicaoGotaAtual, r0
 	
 	; So Apaga e redesenha se (pos != posAnt)
 	; if (pos != posAnt)	{	
-	;load r0, posInimigo1
-	;load r1, posAntInimigo1
-	load r0, posicaoInimigoAtual
-	load r1, posInimigoAnterior
+	load r0, posicaoGotaAtual
+	load r1, posGotaAnterior
 	cmp r0, r1
-	jeq MoveInimigo_Skip
+	jeq MoveGota_Skip
 	
+	call MoveGota_Apaga
+	call MoveGota_Desenha		;}
 	
-	
-	call MoveInimigo_Apaga
-	call MoveInimigo_Desenha		;}
-	
-  	MoveInimigo_Skip:
+  	MoveGota_Skip:
 		pop r1
 		pop r0
 		rts
 			
 ; ----------------------------
 			
-MoveInimigo_Apaga:
+MoveGota_Apaga:
 	push r0
 	push r1
 	push r2
@@ -508,11 +486,10 @@ MoveInimigo_Apaga:
 	push r4
 	push r5
 
-	load r0, posInimigoAnterior	; r0 == posAnt
+	load r0, posGotaAnterior	; r0 == posAnt
 	load r1, posAntPlayer 	; r1 = posAnt
-	;cmp r0, r1
 
-	MoveInimigo_Apaga_Skip:	
+	MoveGota_Apaga_Skip:	
 	  
 		; --> r2 = Tela1Linha0 + posAnt + posAnt/40  
 		; tem que somar posAnt/40 no ponteiro pois as linhas da string terminam com /0 !!
@@ -524,7 +501,7 @@ MoveInimigo_Apaga:
 		
 		loadi r5, r2	; r5 = Char (Tela(posAnt))
 	  
-	  	MoveInimigo_Apaga_Fim:	
+	  	MoveGota_Apaga_Fim:	
 		outchar r5, r0	; Apaga o Obj na tela com o Char correspondente na memoria do cenario
 		
 		pop r5
@@ -538,7 +515,7 @@ MoveInimigo_Apaga:
 			
 	;----------------------------------
 
-	MoveInimigo_Desenha:
+	MoveGota_Desenha:
 		push r0
 		push r1
 		push r2
@@ -546,11 +523,11 @@ MoveInimigo_Apaga:
 		loadn r2, #1536
 	
 	
-		Loadn r1, #'@'	; Inimigo
+		Loadn r1, #'@' ; Gota
 		add r1,r2,r1
-		load r0, posicaoInimigoAtual
+		load r0, posicaoGotaAtual
 		outchar r1, r0
-		store posInimigoAnterior, r0
+		store posGotaAnterior, r0
 		
 		pop r2
 		pop r1
@@ -558,28 +535,24 @@ MoveInimigo_Apaga:
 		rts
 
 
-MoveInimigo_recalculaPos:
+MoveGota_recalculaPos:
 	push r0
 	push r1
 	push r2
 	push r3
 
-	load r0, posicaoInimigoAtual
-	
+	load r0, posicaoGotaAtual
 	
  	loadn r3, #40
  	add r0, r0, r3
  	loadn r3, #1119
  	cmp r0, r3
- 	jle MoveInimigo_FimSwitch
+ 	jle MoveGota_FimSwitch
 
-
-	load r0, posicaoInimigoInicial
+	load r0, posicaoGotaInicial
 	store posCorreta, r0
 	
-
-		
-	MoveInimigo_FimSwitch:
+	MoveGota_FimSwitch:
 	store posCorreta, r0	; Grava a posicao alterada na memoria
 	pop r3
 	pop r2
@@ -587,90 +560,56 @@ MoveInimigo_recalculaPos:
 	pop r0
 	rts
 
-;----------------------------------
+;----------------------------
 
-MoveInimigo6_Desenha:
+Desenha_Bandeja: ; Desenha caractere da Bandeja
 	push r0
 	push r1
-	push r2
-	loadn r2, #1536
 	
-	Loadn r1, #'@'	; Inimigo
-	add r1,r2,r1
-	load r0, posInimigo6
+	Loadn r1, #'#'	; Item
+	load r0, posBandeja
 	outchar r1, r0
-	store posAntInimigo6, r0
 	
-	pop r2
+	pop r1
+	pop r0
+	rts
+	
+Desenha_Garfo:
+	push r0
+	push r1
+	
+	Loadn r1, #'Y' ; garfo
+	load r0, posGarfo
+	outchar r1, r0
+	
 	pop r1
 	pop r0
 	rts
 
+Desenha_Faca:
+	push r0
+	push r1
+	
+	Loadn r1, #'l' ; faca
+	load r0, posFaca
+	outchar r1, r0
+	
+	pop r1
+	pop r0
+	rts
 
-;----------------------------------
-;------------BANDEIRA 1------------
-;----------------------------------
-Bandeira1_Desenha:	; Desenha caractere da Bandeira
+Desenha_Colher:	; Desenha caractere do Item
 	push r0
 	push r1
 	
-	Loadn r1, #'P'	; Bandeira
-	load r0, posBandeira1
+	Loadn r1, #'P'	; Item
+	load r0, posColher
 	outchar r1, r0
 	
 	pop r1
 	pop r0
 	rts
 	
-;----------------------------------
-;------------BANDEIRA 2------------
-;----------------------------------
-Bandeira2_Desenha:	; Desenha caractere da Bandeira
-	push r0
-	push r1
-	
-	Loadn r1, #'S'	; Bandeira
-	load r0, posBandeira2
-	outchar r1, r0
-	
-	pop r1
-	pop r0
-	rts
-	
-;----------------------------------
-;------------BANDEIRA 3------------
-;----------------------------------
-Bandeira3_Desenha:	; Desenha caractere da Bandeira
-	push r0
-	push r1
-	
-	Loadn r1, #'U'	; Bandeira
-	load r0, posBandeira3
-	outchar r1, r0
-	
-	pop r1
-	pop r0
-	rts
-	
-;----------------------------------
-;------------BANDEIRA 4------------
-;----------------------------------
-Bandeira4_Desenha:	; Desenha caractere da Bandeira
-	push r0
-	push r1
-	
-	Loadn r1, #'#'	; Bandeira
-	load r0, posBandeira4
-	outchar r1, r0
-	
-	pop r1
-	pop r0
-	rts
-	
-	
-
-;----------------------------------
-;------------CHECA POS-------------
 ;----------------------------------
 
 ChecaPos:
@@ -681,217 +620,200 @@ ChecaPos:
 	push r4
 	push r5
 	
-	;Verificar colisão com inimigos;
-	load r0, posPlayer	; Testa se o Inimigo colidiu com a Player
-	load r1, posInimigo1
-	cmp r0, r1			; if posPlayer == posInimigo  BOOM!!
+	;Verificar colisão com Gotas;
+	load r0, posPlayer	; Testa se o Gota colidiu com o Player
+	load r1, posGota1
+	cmp r0, r1			; if posPlayer == posGota  BOOM!!
 	jeq ColisaoPlayer
 	
-	load r1, posInimigo2
-	cmp r0, r1			; if posPlayer == posInimigo   BOOM!!
+	load r1, posGota2
+	cmp r0, r1			; if posPlayer == posGota   BOOM!!
 	jeq ColisaoPlayer
 	
-	load r1, posInimigo3
-	cmp r0, r1			; if posPlayer == posInimigo   BOOM!!
+	load r1, posGota3
+	cmp r0, r1			; if posPlayer == posGota   BOOM!!
 	jeq ColisaoPlayer
 	
-	load r1, posInimigo4
-	cmp r0, r1			; if posPlayer == posInimigo   BOOM!!
+	load r1, posGota4
+	cmp r0, r1			; if posPlayer == posGota   BOOM!!
 	jeq ColisaoPlayer
 	
-	load r1, posInimigo5
-	cmp r0, r1			; if posPlayer == posInimigo   BOOM!!
+	load r1, posGota5
+	cmp r0, r1			; if posPlayer == posGota   BOOM!!
 	jeq ColisaoPlayer
 	
-	load r1, posInimigo6
-	cmp r0, r1			; if posPlayer == posInimigo   BOOM!!
+	load r1, posGota6
+	cmp r0, r1			; if posPlayer == posGota   BOOM!!
 	jeq ColisaoPlayer
 	;------------------------;
 	
-	;Verificar se o jogador alcançou as bandeiras;
-	load r1, posBandeira1
-	cmp r0, r1			; if posPlayer == posBandeira  Pega a bandeira!!
-	jeq PegarBandeira1
+	;Verificar se o jogador alcançou os itens;
+	load r1, posBandeja
+	cmp r0, r1			; if posPlayer == posItem  Pega o Item!!
+	jeq PegarBandeja
 	
-	load r1, posBandeira2
-	cmp r0, r1			; if posPlayer == posBandeira  Pega a bandeira!!
-	jeq PegarBandeira2
+	load r1, posGarfo
+	cmp r0, r1			; if posPlayer == posItem  Pega o Item!!
+	jeq PegarGarfo
 	
-	load r1, posBandeira3
-	cmp r0, r1			; if posPlayer == posBandeira  Pega a bandeira!!
-	jeq PegarBandeira3
+	load r1, posFaca
+	cmp r0, r1			; if posPlayer == posItem  Pega o Item!!
+	jeq PegarFaca
 	
-	load r1, posBandeira4
-	cmp r0, r1			; if posPlayer == posBandeira  Pega a bandeira!!
-	jeq PegarBandeira4
+	load r1, posGarfo
+	cmp r0, r1			; if posPlayer == posItem  Pega o Item!!
+	jeq PegarItem4
 	;------------------------;
 	
-	;Verificar se o jogador alcançou o campo em que se deve por as bandeiras;
-	load r1, posFinalBandeira1
-	cmp r0, r1			; if posPlayer == posBandeira  Coloca a bandeira!!
-	jeq ColocarBandeira1
+	;Verificar se o jogador alcançou o campo em que se deve por as Items;
+	load r1, posFinalBandeja
+	cmp r0, r1			; if posPlayer == posItem  Coloca o Item!!
+	jeq ColocarBandeja
 	
-	load r1, posFinalBandeira2
-	cmp r0, r1			; if posPlayer == posBandeira  Coloca a bandeira!!
-	jeq ColocarBandeira2
+	load r1, posFinalGarfo
+	cmp r0, r1			; if posPlayer == posItem  Coloca o Item!!
+	jeq ColocarGarfo
 	
-	load r1, posFinalBandeira3
-	cmp r0, r1			; if posPlayer == posBandeira  Coloca a bandeira!!
-	jeq ColocarBandeira3
+	load r1, posFinalFaca
+	cmp r0, r1			; if posPlayer == posItem  Coloca o Item!!
+	jeq ColocarFaca
 	
-	load r1, posFinalBandeira4
-	cmp r0, r1			; if posPlayer == posBandeira  Coloca a bandeira!!
-	jeq ColocarBandeira4
+	load r1, posFinalColher
+	cmp r0, r1			; if posPlayer == posItem  Coloca o Item!!
+	jeq ColocarColher
  
 	jmp FimChecagem
 	
 ;----------------------------------
-;---------PEGAR BANDEIRA 1---------
-;----------------------------------
 
-PegarBandeira1:
-	load r1, pegouBandeira1
+PegarBandeja:
+	load r1, pegouBandeja
 	loadn r2, #1
 	cmp r1, r2
 	jeq FimChecagem
-	store pegouBandeira1, r2
+	store pegouBandeja, r2
 	jmp FimChecagem
 	
 ;----------------------------------
-;---------PEGAR BANDEIRA 2---------
-;----------------------------------
 
-PegarBandeira2:
-	load r1, pegouBandeira2
+PegarGarfo:
+	load r1, pegouGarfo
 	loadn r2, #1
 	cmp r1, r2
 	jeq FimChecagem
-	store pegouBandeira2, r2
+	store pegouGarfo, r2
 	jmp FimChecagem
 	
 ;----------------------------------
-;---------PEGAR BANDEIRA 3---------
-;----------------------------------
 
-PegarBandeira3:
-	load r1, pegouBandeira3
+PegarFaca:
+	load r1, pegouFaca
 	loadn r2, #1
 	cmp r1, r2
 	jeq FimChecagem
-	store pegouBandeira3, r2
+	store pegouFaca, r2
 	jmp FimChecagem
 
 ;----------------------------------
-;---------PEGAR BANDEIRA 4---------
-;----------------------------------
 
-PegarBandeira4:
-	load r1, pegouBandeira4
+PegarItem4:
+	load r1, pegouColher
 	loadn r2, #1
 	cmp r1, r2
 	jeq FimChecagem
-	store pegouBandeira4, r2
+	store pegouColher, r2
 	jmp FimChecagem
 	
-	
-;----------------------------------
-;--------COLOCAR BANDEIRA 1--------
 ;----------------------------------
 
-ColocarBandeira1:
-	load r1, pegouBandeira1
+ColocarBandeja:
+	load r1, pegouBandeja
 	loadn r2, #1
 	cmp r1, r2
 	jne FimChecagem
-	store colocouBandeira1, r2
-	load r1, posFinalBandeira1
+	store colocouBandeja, r2
+	load r1, posFinalBandeja
 	dec r1
-	store posBandeira1, r1
-	call Bandeira1_Desenha
-	call ChecarBandeirasColocadas
+	store posBandeja, r1
+	call Desenha_Bandeja
+	call ChecarItensEntregues
 	jmp FimChecagem
 	
 ;----------------------------------
-;--------COLOCAR BANDEIRA 2--------
-;----------------------------------
 
-ColocarBandeira2:
-	load r1, pegouBandeira2
+ColocarGarfo:
+	load r1, pegouGarfo
 	loadn r2, #1
 	cmp r1, r2
 	jne FimChecagem
-	store colocouBandeira2, r2
-	load r1, posFinalBandeira2
+	store colocouGarfo, r2
+	load r1, posFinalGarfo
 	dec r1
-	store posBandeira2, r1
-	call Bandeira2_Desenha
-	call ChecarBandeirasColocadas
-	jmp FimChecagem
-	
-;----------------------------------
-;--------COLOCAR BANDEIRA 3--------
-;----------------------------------
-
-ColocarBandeira3:
-	load r1, pegouBandeira3
-	loadn r2, #1
-	cmp r1, r2
-	jne FimChecagem
-	store colocouBandeira3, r2
-	load r1, posFinalBandeira3
-	dec r1
-	store posBandeira3, r1
-	call Bandeira3_Desenha
-	call ChecarBandeirasColocadas
+	store posGarfo, r1
+	call Desenha_Garfo
+	call ChecarItensEntregues
 	jmp FimChecagem
 
 ;----------------------------------
-;--------COLOCAR BANDEIRA 4--------
-;----------------------------------
 
-ColocarBandeira4:
-	load r1, pegouBandeira4
+ColocarFaca:
+	load r1, pegouFaca
 	loadn r2, #1
 	cmp r1, r2
 	jne FimChecagem
-	store colocouBandeira4, r2
-	load r1, posFinalBandeira4
+	store colocouFaca, r2
+	load r1, posFinalFaca
 	dec r1
-	store posBandeira4, r1
-	call Bandeira4_Desenha
-	call ChecarBandeirasColocadas
+	store posFaca, r1
+	call Desenha_Faca
+	call ChecarItensEntregues
+	jmp FimChecagem
+
+;----------------------------------
+
+ColocarColher:
+	load r1, pegouColher
+	loadn r2, #1
+	cmp r1, r2
+	jne FimChecagem
+	store colocouColher, r2
+	load r1, posFinalColher
+	dec r1
+	store posGarfo, r1
+	call Desenha_Colher
+	call ChecarItensEntregues
 	jmp FimChecagem
 	
 
-;Função que checa se as bandeiras pegas foram colocadas no local correto
-;Se todas as quatro estiverem em suas devidas bases, declara vitória
-ChecarBandeirasColocadas:
+;Função que checa se os Items pegos foram colocadas no local correto
+;Se todas os três estiverem nos locais adequados, declara vitória
+ChecarItensEntregues:
 	push r0
 	push r1
 
 	loadn r1, #1
 	
-	load r2, colocouBandeira1
+	load r2, colocouBandeja
 	cmp r1, r2
-	jne FimChecagem_BandeirasColocadas
+	jne FimChecagem_ItensEntregues
 	
-	load r2, colocouBandeira2
+	load r2, colocouGarfo
 	cmp r1, r2
-	jne FimChecagem_BandeirasColocadas
+	jne FimChecagem_ItensEntregues
 	
-	load r2, colocouBandeira3
+	load r2, colocouFaca
 	cmp r1, r2
-	jne FimChecagem_BandeirasColocadas
+	jne FimChecagem_ItensEntregues
 	
-	load r2, colocouBandeira4
+	load r2, colocouColher
 	cmp r1, r2
-	jne FimChecagem_BandeirasColocadas
+	jne FimChecagem_ItensEntregues
 	
 
 	jmp Vitoria
-	jmp FimChecagem_BandeirasColocadas
+	jmp FimChecagem_ItensEntregues
 	
-	FimChecagem_BandeirasColocadas:
+	FimChecagem_ItensEntregues:
 		pop r1
 		pop r0
 		rts
@@ -900,24 +822,23 @@ ChecarBandeirasColocadas:
 Vitoria:
 
 	Loop_Inicio:
-		call DigLetra 			; Le uma letra do teclado
-		loadn r0, #'w'			; Quando a tecla 'w' for acionada,continua a execução
+		call DigLetra 	; Le uma letra do teclado
+		loadn r0, #'w'	; Quando a tecla 'w' for acionada,continua a execução
 		load r1, Letra
 		cmp r0, r1
 		jne Loop_Inicio
 
 	
 	; Limpa a Tela !!
-  	loadn r1, #tela4Linha0	; Endereco onde comeca a primeira linha do cenario!!
+  	loadn r1, #tela0Linha0	; Endereco onde comeca a primeira linha do cenario!!
 	loadn r2, #0  			; cor branca!
 	call ImprimeTela   		; rotina de Impresao de Cenario na Tela Inteira
 	
-	
-	
-	;loadn r1, #telafinalbasicaLinha0
-	;loadn r2, #256  			; cor branca!
-	;call ImprimeTela   		; rotina de Impresao da Basica
-	
+	;imprime quer jogar novamente 
+ 	loadn r0, #761 
+ 	loadn r1, #Autores 
+ 	loadn r2, #0 
+ 	call ImprimeStr
   
 	;imprime Voce Venceu !!!
 	loadn r0, #528
@@ -934,19 +855,25 @@ Vitoria:
 	call DigLetra
 	loadn r0, #'s'
 	load r1, Letra
-	cmp r0, r1				; tecla == 's' ?
+	cmp r0, r1	; tecla == 's' ?
 	jne FimJogo	; tecla nao e' 's'
 	
 	; Se quiser jogar novamente...
 	call ApagaTela
 	jmp main
 
-;Checar se o player colidiu com o inimigo
+;Checar se o player colidiu com o Gota
 ColisaoPlayer:	
 	; Limpa a Tela !!
-  	loadn r1, #tela4Linha0	; Endereco onde comeca a primeira linha do cenario!!
+  	loadn r1, #tela0Linha0	; Endereco onde comeca a primeira linha do cenario!!
 	loadn r2, #0  			; cor branca!
 	call ImprimeTela   		; rotina de Impresao de Cenario na Tela Inteira
+	
+	;imprime quer jogar novamente 
+ 	loadn r0, #761 
+ 	loadn r1, #Autores 
+ 	loadn r2, #0 
+ 	call ImprimeStr
   
 	;imprime Voce Perdeu !!!
 	loadn r0, #528
@@ -1241,164 +1168,131 @@ tela0Linha27 : string "                                        "
 tela0Linha28 : string "                                        "
 tela0Linha29 : string "                                        "	
 
+
 ; Declara e preenche tela linha por linha (40 caracteres):
-tela1Linha0  : string "                   ||                   "
-tela1Linha1  : string "                   ||                   "
-tela1Linha2  : string "                   ||                   "
-tela1Linha3  : string "                   ||                   "
-tela1Linha4  : string "                   ||                   "
-tela1Linha5  : string "                   ||                   "
-tela1Linha6  : string "                   ||                   "
-tela1Linha7  : string "                   ||                   "
-tela1Linha8  : string "                   ||                   "
-tela1Linha9  : string "                   ||                   "
-tela1Linha10 : string "                   ||                   "
-tela1Linha11 : string "                   ||                   "
-tela1Linha12 : string "                   ||                   "
-tela1Linha13 : string "                   ||                   "
-tela1Linha14 : string "                   ||                   "
-tela1Linha15 : string "                   ||                   "
-tela1Linha16 : string "                   ||                   "
-tela1Linha17 : string "                   ||                   "
-tela1Linha18 : string "                   ||                   "
-tela1Linha19 : string "                   ||                   "
-tela1Linha20 : string "                   ||                   "
-tela1Linha21 : string "                   ||                   "
-tela1Linha22 : string "                   ||                   "
-tela1Linha23 : string "                   ||                   "
-tela1Linha24 : string "                   ||                   "
-tela1Linha25 : string "                   ||                   "
-tela1Linha26 : string "                   ||                   "
-tela1Linha27 : string "                   ||                   "
-tela1Linha28 : string "                   ||                   "
+tela1Linha0  : string "----------------------------------------"
+tela1Linha1  : string "                                        "
+tela1Linha2  : string "                                        "
+tela1Linha3  : string "                                        "
+tela1Linha4  : string "                                        "
+tela1Linha5  : string "                                        "
+tela1Linha6  : string "                           1.Busque     "
+tela1Linha7  : string " +-^                      os objetivos  "
+tela1Linha8  : string "   |                          aqui !    "
+tela1Linha9  : string "   ^                                    "
+tela1Linha10 : string "   |                                    "
+tela1Linha11 : string "   ^                                    "
+tela1Linha12 : string "   |                                    "
+tela1Linha13 : string "   ^                                    "
+tela1Linha14 : string "   |                         - >        "
+tela1Linha15 : string "   ^                                    "
+tela1Linha16 : string "   |                                    "
+tela1Linha17 : string "   ^                                    "
+tela1Linha18 : string "   |                                    "
+tela1Linha19 : string "   ^                                    "
+tela1Linha20 : string "   |                                    "
+tela1Linha21 : string " +-^                                    "
+tela1Linha22 : string "                                        "
+tela1Linha23 : string "  2.Entregue                            "
+tela1Linha24 : string "   percorrendo                          "
+tela1Linha25 : string "   as setas !                           "
+tela1Linha26 : string "   setas!                               "
+tela1Linha27 : string "                                        "
+tela1Linha28 : string "----------------------------------------"
 tela1Linha29 : string "                                        "
 
 ; Declara e preenche tela linha por linha (40 caracteres):
 tela2Linha0  : string "----------------------------------------"
-tela2Linha1  : string "                                        "
-tela2Linha2  : string "                                        "
-tela2Linha3  : string "                                        "
+tela2Linha1  : string "            Cuidado para nao se         "
+tela2Linha2  : string "             molhar MWHAHAW XD          "
+tela2Linha3  : string " Saida                                  "
 tela2Linha4  : string "                                        "
 tela2Linha5  : string "                                        "
-tela2Linha6  : string "                           1.Busque     "
-tela2Linha7  : string " +-^                      os objetivos  "
-tela2Linha8  : string "   |                          aqui !    "
-tela2Linha9  : string "   ^                                    "
-tela2Linha10 : string "   |                                    "
-tela2Linha11 : string "   ^                                    "
-tela2Linha12 : string "   |                                    "
-tela2Linha13 : string "   ^                                    "
-tela2Linha14 : string "   |                         - >        "
-tela2Linha15 : string "   ^                                    "
-tela2Linha16 : string "   |                                    "
-tela2Linha17 : string "   ^                                    "
-tela2Linha18 : string "   |                                    "
-tela2Linha19 : string "   ^                                    "
-tela2Linha20 : string "   |                                    "
-tela2Linha21 : string " +-^                                    "
+tela2Linha6  : string "                                        "
+tela2Linha7  : string "                                        "
+tela2Linha8  : string "                                        "
+tela2Linha9  : string "                                        "
+tela2Linha10 : string "                                        "
+tela2Linha11 : string "                                        "
+tela2Linha12 : string "                                 +------"
+tela2Linha13 : string "                                 |      "
+tela2Linha14 : string "                                 |      "
+tela2Linha15 : string "                                 |      "
+tela2Linha16 : string "                                 +------"
+tela2Linha17 : string "                                        "
+tela2Linha18 : string "                                        "
+tela2Linha19 : string "                                        "
+tela2Linha20 : string "                                        "
+tela2Linha21 : string "                                        "
 tela2Linha22 : string "                                        "
-tela2Linha23 : string "  2.Entregue                            "
-tela2Linha24 : string "   percorrendo                          "
-tela2Linha25 : string "   as setas !                           "
-tela2Linha26 : string "   setas!                               "
+tela2Linha23 : string "                                        "
+tela2Linha24 : string "                                        "
+tela2Linha25 : string "                                        "
+tela2Linha26 : string "                                        "
 tela2Linha27 : string "                                        "
 tela2Linha28 : string "----------------------------------------"
 tela2Linha29 : string "                                        "
 
-; Declara e preenche tela linha por linha (40 caracteres):
-tela3Linha0  : string "----------------------------------------"
-tela3Linha1  : string "            Cuidado para nao se         "
-tela3Linha2  : string "             molhar MWHAHAW XD          "
-tela3Linha3  : string " Saida                                  "
-tela3Linha4  : string "                                        "
-tela3Linha5  : string "                                        "
-tela3Linha6  : string "                                        "
-tela3Linha7  : string "                                        "
-tela3Linha8  : string "                                        "
-tela3Linha9  : string "                                        "
-tela3Linha10 : string "                                        "
-tela3Linha11 : string "                                        "
-tela3Linha12 : string "                                 +------"
-tela3Linha13 : string "                                 |      "
-tela3Linha14 : string "                                 |      "
-tela3Linha15 : string "                                 |      "
-tela3Linha16 : string "                                 +------"
-tela3Linha17 : string "                                        "
-tela3Linha18 : string "                                        "
-tela3Linha19 : string "                                        "
-tela3Linha20 : string "                                        "
-tela3Linha21 : string "                                        "
-tela3Linha22 : string "                                        "
-tela3Linha23 : string "                                        "
-tela3Linha24 : string "                                        "
-tela3Linha25 : string "                                        "
-tela3Linha26 : string "                                        "
-tela3Linha27 : string "                                        "
-tela3Linha28 : string "----------------------------------------"
-tela3Linha29 : string "                                        "
-
 ; Declara e preenche tela linha por linha (40 caracteres):9
-tela4Linha0  : string "========================================"
-tela4Linha1  : string "|                                      |"
-tela4Linha2  : string "|                                      |"
-tela4Linha3  : string "|                                      |"
-tela4Linha4  : string "|                                      |"
-tela4Linha5  : string "|                                      |"
-tela4Linha6  : string "|                                      |"
-tela4Linha7  : string "|                                      |"
-tela4Linha8  : string "|                                      |"
-tela4Linha9  : string "|                                      |"
-tela4Linha10 : string "|                                      |"
-tela4Linha11 : string "|                                      |"
-tela4Linha12 : string "|                                      |"
-tela4Linha13 : string "|                                      |"
-tela4Linha14 : string "|                                      |"
-tela4Linha15 : string "|                                      |"
-tela4Linha16 : string "|                                      |"
-tela4Linha17 : string "|                                      |"
-tela4Linha18 : string "|                                      |"
-tela4Linha19 : string "|                                      |"
-tela4Linha20 : string "|                                      |"
-tela4Linha21 : string "|                                      |"
-tela4Linha22 : string "|                                      |"
-tela4Linha23 : string "|                                      |"
-tela4Linha24 : string "|                                      |"
-tela4Linha25 : string "|                                      |"
-tela4Linha26 : string "|                                      |"
-tela4Linha27 : string "|                                      |"
-tela4Linha28 : string "========================================"
-tela4Linha29 : string "========================================"
+tela3Linha0  : string "========================================"
+tela3Linha1  : string "|                                      |"
+tela3Linha2  : string "|                                      |"
+tela3Linha3  : string "|                                      |"
+tela3Linha4  : string "|                                      |"
+tela3Linha5  : string "|                                      |"
+tela3Linha6  : string "|                                      |"
+tela3Linha7  : string "|                                      |"
+tela3Linha8  : string "|                                      |"
+tela3Linha9  : string "|                                      |"
+tela3Linha10 : string "|                                      |"
+tela3Linha11 : string "|                                      |"
+tela3Linha12 : string "|                                      |"
+tela3Linha13 : string "|                                      |"
+tela3Linha14 : string "|                                      |"
+tela3Linha15 : string "|                                      |"
+tela3Linha16 : string "|                                      |"
+tela3Linha17 : string "|                                      |"
+tela3Linha18 : string "|                                      |"
+tela3Linha19 : string "|                                      |"
+tela3Linha20 : string "|                                      |"
+tela3Linha21 : string "|                                      |"
+tela3Linha22 : string "|                                      |"
+tela3Linha23 : string "|                                      |"
+tela3Linha24 : string "|                                      |"
+tela3Linha25 : string "|                                      |"
+tela3Linha26 : string "|                                      |"
+tela3Linha27 : string "|                                      |"
+tela3Linha28 : string "========================================"
+tela3Linha29 : string "========================================"
 
 ; --------------------------------------------- TELA INICIAL ---------------------------------------------
 telaInicioLinha0:  string "                                        "          
 telaInicioLinha1:  string "                                        "    
 telaInicioLinha2:  string "                                        "          
-telaInicioLinha3:  string "                                        "             
-telaInicioLinha4:  string "   *** *  * ***** ***   ***  ***   **   "             
-telaInicioLinha5:  string "  *    ** *   *   *  * *    *     *  *  "         
-telaInicioLinha6:  string "  ***  * **   *   ***  ***  *  ** ****  "         
-telaInicioLinha7:  string "  *    *  *   *   * *  *    *   * *  *  "        
-telaInicioLinha8:  string "   *** *  *   *   *  *  ***  ***  *  *  "
-telaInicioLinha9:  string "                                        "
-telaInicioLinha10: string "   ***   **  *  * ***   *** ****  **    "
-telaInicioLinha11: string "   *  * *  * ** * *  * *       * *  *   "
-telaInicioLinha12: string "   ***  **** * ** *  * **      * ****   "
-telaInicioLinha13: string "   *  * *  * *  * *  * *    *  * *  *   "
-telaInicioLinha14: string "   ***  *  * *  * ***   ***  **  *  *   "
+telaInicioLinha3:  string "   *** *  * ***** ***   ***  ***   **   "             
+telaInicioLinha4:  string "  *    ** *   *   *  * *    *     *  *  "             
+telaInicioLinha5:  string "  ***  * **   *   ***  ***  *  ** ****  "         
+telaInicioLinha6:  string "  *    *  *   *   * *  *    *   * *  *  "         
+telaInicioLinha7:  string "   *** *  *   *   *  *  ***  ***  *  *  "
+telaInicioLinha8:  string "                                        "       
+telaInicioLinha9:  string "   ***   **  *  * ***   *** ****  **    "
+telaInicioLinha10: string "   *  * *  * ** * *  * *       * *  *   "
+telaInicioLinha11: string "   ***  **** * ** *  * **      * ****   "
+telaInicioLinha12: string "   *  * *  * *  * *  * *    *  * *  *   "
+telaInicioLinha13: string "   ***  *  * *  * ***   ***  **  *  *   "
+telaInicioLinha14: string "                                        "
 telaInicioLinha15: string "                                        "
-telaInicioLinha16: string "                                        "
+telaInicioLinha16: string "    ENTREGUE SUA BANDEJA E TALHERES     "
 telaInicioLinha17: string "                                        "
-telaInicioLinha18: string "    ENTREGUE SUA BANDEJA E TALHERES     "
+telaInicioLinha18: string "      SEM LEVAR UM BANHO DA DUCHA       "
 telaInicioLinha19: string "                                        "
-telaInicioLinha20: string "      SEM LEVAR UM BANHO DA DUCHA       "
+telaInicioLinha20: string "          DO TATUADO PUTO >:(           "
 telaInicioLinha21: string "                                        "
-telaInicioLinha22: string "          DO TATUADO PUTO >:(           "
-telaInicioLinha23: string "                                        "
-telaInicioLinha24: string "      APERTE ESPACO PARA INICIAR!       "
-telaInicioLinha25: string "                                        "
+telaInicioLinha22: string "                                        "
+telaInicioLinha23: string "      APERTE ESPACO PARA INICIAR!       "
+telaInicioLinha24: string "                                        "
+telaInicioLinha25: string " MOVIMENTE-SE COM AS TECLAS W, A, S e D "
 telaInicioLinha26: string "                                        "
 telaInicioLinha27: string "                                        "
 telaInicioLinha28: string "                                        "
 telaInicioLinha29: string "                                        "
-
-
