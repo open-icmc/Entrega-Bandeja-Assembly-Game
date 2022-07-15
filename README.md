@@ -108,7 +108,6 @@ abra o arquivo .asm e aperte F7, quando a janela do simulador abrir aperte HOME 
                     end_cnt += 1;
                     break;
 
-                /* ==============
 		
 // 3) Buscar o nome da instrucao na base de instrucoes e retornar 'op_code interno' da instrucao:	
 
